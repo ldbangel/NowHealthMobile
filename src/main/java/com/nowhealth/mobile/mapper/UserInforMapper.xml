@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowhealth.mobile.dao.UserInforMapper">
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.UserInfor">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="headPortrait" jdbcType="VARCHAR" property="headportrait" />
+    <result column="userPhoneNo" jdbcType="VARCHAR" property="userphoneno" />
+    <result column="emailsAddress" jdbcType="VARCHAR" property="emailsaddress" />
+    <result column="agentFlag" jdbcType="INTEGER" property="agentflag" />
+    <result column="userType" jdbcType="INTEGER" property="usertype" />
+    <result column="couponCode" jdbcType="VARCHAR" property="couponcode" />
+    <result column="payee" jdbcType="VARCHAR" property="payee" />
+    <result column="payeeID" jdbcType="VARCHAR" property="payeeid" />
+    <result column="bankNumber" jdbcType="VARCHAR" property="banknumber" />
+    <result column="bankPhoneNo" jdbcType="VARCHAR" property="bankphoneno" />
+    <result column="drawalAmount" jdbcType="DOUBLE" property="drawalamount" />
+    
+    <result column="withdrawal" jdbcType="DOUBLE" property="withdrawal" />
+    <result column="totaldraAmount" jdbcType="DOUBLE" property="totaldraAmount" />
+    
+    <result column="createTimes" jdbcType="TIMESTAMP" property="createtimes" />
+    <result column="updateTimes" jdbcType="TIMESTAMP" property="updatetimes" />
+    <result column="cashDealpass" jdbcType="VARCHAR" property="cashDealpass" />
+    <result column="bankprop" jdbcType="VARCHAR" property="bankprop" />
+    <result column="verificNumber" jdbcType="INTEGER" property="verificNumber" />
+    <result column="varificTotalNumber" jdbcType="INTEGER" property="varificTotalNumber" />
+    <result column="verificTime" jdbcType="VARCHAR" property="verificTime" />
+    <result column="bankPayUserId" jdbcType="VARCHAR" property="bankPayUserId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userName, password, nickName, headPortrait, userPhoneNo, emailsAddress, agentFlag, 
+    userType, couponCode, payee, payeeID, bankNumber, bankPhoneNo,drawalAmount,withdrawal,totaldraAmount,cashDealpass,bankprop,verificNumber,varificTotalNumber,verificTime,bankPayUserId,createTimes, updateTimes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_userinfor
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  
+    <select id="selectByName" parameterType="com.nowhealth.mobile.entity.UserInfor" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_userinfor
+    where 1=1 
+     <if test="userid != null">
+        and userId= #{userid,jdbcType=INTEGER}
+     </if>
+     <if test="username != null">
+     	and userName = #{username,jdbcType=VARCHAR}	
+     </if>
+     <if test="password != null">
+		and password = #{password,jdbcType=VARCHAR}     	
+     </if>	
+	 <if test="userphoneno!=null">
+	 	and userPhoneNo = #{userphoneno,jdbcType=VARCHAR}
+	 </if>
+	 <if test="emailsaddress != null">
+        and emailsAddress = #{emailsaddress,jdbcType=VARCHAR}
+      </if>
+      <if test="nickname != null">
+        and nickName = #{nickname,jdbcType=VARCHAR}
+      </if>
+      <if test="headportrait != null">
+        and headPortrait = #{headportrait,jdbcType=VARCHAR}
+      </if>
+      <if test="usertype != null">
+        and userType = #{usertype,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nowmb_userinfor
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nowhealth.mobile.entity.UserInfor">
+    insert into nowmb_userinfor (userId, userName, password, 
+      nickName, headPortrait, userPhoneNo, 
+      emailsAddress, agentFlag, userType, 
+      couponCode, payee, payeeID, 
+      bankNumber, bankPhoneNo,drawalAmount,withdrawal,totaldraAmount,createTimes, 
+      updateTimes)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{headportrait,jdbcType=VARCHAR}, #{userphoneno,jdbcType=VARCHAR}, 
+      #{emailsaddress,jdbcType=VARCHAR}, #{agentflag,jdbcType=INTEGER}, #{usertype,jdbcType=INTEGER}, 
+      #{couponcode,jdbcType=VARCHAR}, #{payee,jdbcType=VARCHAR}, #{payeeid,jdbcType=VARCHAR}, 
+      #{banknumber,jdbcType=VARCHAR}, #{bankphoneno,jdbcType=VARCHAR},#{drawalAmount,jdbcType=DOUBLE},
+      #{withdrawal,jdbcType=DOUBLE},#{totaldraAmount,jdbcType=DOUBLE},#{createtimes,jdbcType=TIMESTAMP}, 
+      #{updatetimes,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nowhealth.mobile.entity.UserInfor">
+    insert into nowmb_userinfor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="headportrait != null">
+        headPortrait,
+      </if>
+      <if test="userphoneno != null">
+        userPhoneNo,
+      </if>
+      <if test="emailsaddress != null">
+        emailsAddress,
+      </if>
+      <if test="agentflag != null">
+        agentFlag,
+      </if>
+      <if test="usertype != null">
+        userType,
+      </if>
+      <if test="couponcode != null">
+        couponCode,
+      </if>
+      <if test="payee != null">
+        payee,
+      </if>
+      <if test="payeeid != null">
+        payeeID,
+      </if>
+      <if test="banknumber != null">
+        bankNumber,
+      </if>
+      <if test="bankphoneno != null">
+        bankPhoneNo,
+      </if>
+      <if test="drawalamount != null">
+        drawalAmount,
+      </if>
+      <if test="withdrawal != null">
+        withdrawal,
+      </if>
+      <if test="totaldraAmount != null">
+        totaldraAmount,
+      </if>
+      <if test="cashDealpass != null">
+        cashDealpass,
+      </if>
+       <if test="bankprop != null">
+        bankprop,
+      </if>
+      <if test="createtimes != null">
+        createTimes,
+      </if>
+      <if test="updatetimes != null">
+        updateTimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headportrait != null">
+        #{headportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoneno != null">
+        #{userphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="emailsaddress != null">
+        #{emailsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="agentflag != null">
+        #{agentflag,jdbcType=INTEGER},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="couponcode != null">
+        #{couponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payee != null">
+        #{payee,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeid != null">
+        #{payeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="banknumber != null">
+        #{banknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankphoneno != null">
+        #{bankphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="drawalamount">
+         #{drawalamount,jdbcType=DOUBLE},
+      </if>
+      <if test="withdrawal">
+         #{withdrawal,jdbcType=DOUBLE},
+      </if>
+       <if test="totaldraAmount">
+         #{totaldraAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="cashDealpass != null">
+        #{cashDealpass,jdbcType=VARCHAR},
+      </if>
+      <if test="bankprop != null">
+        #{bankprop,jdbcType=VARCHAR},
+      </if>
+      <if test="createtimes != null">
+        #{createtimes,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetimes != null">
+        #{updatetimes,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nowhealth.mobile.entity.UserInfor">
+    update nowmb_userinfor
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headportrait != null">
+        headPortrait = #{headportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoneno != null">
+        userPhoneNo = #{userphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="emailsaddress != null">
+        emailsAddress = #{emailsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="agentflag != null">
+        agentFlag = #{agentflag,jdbcType=INTEGER},
+      </if>
+      <if test="usertype != null">
+        userType = #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="couponcode != null">
+        couponCode = #{couponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payee != null">
+        payee = #{payee,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeid != null">
+        payeeID = #{payeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="banknumber != null">
+        bankNumber = #{banknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankphoneno != null">
+        bankPhoneNo = #{bankphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="drawalamount != null">
+        drawalAmount = #{drawalamount,jdbcType=DOUBLE},
+      </if>
+       <if test="withdrawal != null">
+        withdrawal = #{withdrawal,jdbcType=DOUBLE},
+      </if>
+      <if test="totaldraAmount != null">
+        totaldraAmount = #{totaldraAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="cashDealpass != null">
+        cashDealpass= #{cashDealpass,jdbcType=VARCHAR},
+      </if>
+      <if test="bankprop != null">
+        bankprop= #{bankprop,jdbcType=VARCHAR},
+      </if>
+      <if test="verificTime != null">
+        verificTime= #{verificTime,jdbcType=VARCHAR},
+      </if>
+      <if test="verificNumber != null">
+        verificNumber = #{verificNumber,jdbcType=INTEGER},
+      </if>
+      <if test="varificTotalNumber != null">
+        varificTotalNumber = #{varificTotalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bankPayUserId != null">
+        bankPayUserId = #{bankPayUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtimes != null">
+        createTimes = #{createtimes,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetimes != null">
+        updateTimes = #{updatetimes,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nowhealth.mobile.entity.UserInfor">
+    update nowmb_userinfor
+    set userName = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      headPortrait = #{headportrait,jdbcType=VARCHAR},
+      userPhoneNo = #{userphoneno,jdbcType=VARCHAR},
+      emailsAddress = #{emailsaddress,jdbcType=VARCHAR},
+      agentFlag = #{agentflag,jdbcType=INTEGER},
+      userType = #{usertype,jdbcType=INTEGER},
+      couponCode = #{couponcode,jdbcType=VARCHAR},
+      payee = #{payee,jdbcType=VARCHAR},
+      payeeID = #{payeeid,jdbcType=VARCHAR},
+      bankNumber = #{banknumber,jdbcType=VARCHAR},
+      bankPhoneNo = #{bankphoneno,jdbcType=VARCHAR},
+      drawalAmount = #{drawalamount,jdbcType=DOUBLE},
+      withdrawal = #{withdrawal,jdbcType=DOUBLE},
+      totaldraAmount = #{totaldraAmount,jdbcType=DOUBLE},
+       bankPayUserId = #{bankPayUserId,jdbcType=VARCHAR},
+      createTimes = #{createtimes,jdbcType=TIMESTAMP},
+      updateTimes = #{updatetimes,jdbcType=TIMESTAMP}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  
+  <!--查詢不是當天驗證次數 -->
+  <select id="selectByUser2" resultMap="BaseResultMap" parameterType="java.util.Map" >
+     select 
+    <include refid="Base_Column_List" />
+         from nowmb_userinfor where verificTime not like CONCAT('%',#{verifictime},'%')
+    <if test="userid !='' and userid !=null">
+         and userId = #{userid,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!-- 查詢當天驗證次數 -->
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
+     select 
+    <include refid="Base_Column_List" />
+         from nowmb_userinfor where verificTime like CONCAT('%',#{verifictime},'%')
+    <if test="userid !='' and userid !=null">
+         and userId = #{userid,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+</mapper>

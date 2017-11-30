@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowhealth.mobile.dao.MyAccountMapper">
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.BaseInfor">
+    <id column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="orderNo" jdbcType="VARCHAR" property="orderno" />
+    <result column="isagentshare" jdbcType="INTEGER" property="isagentshare" />
+    <result column="purchaserName" jdbcType="VARCHAR" property="purchasername" />
+    <result column="cardID" jdbcType="VARCHAR" property="cardID" />
+    <result column="purchaserPhoneNo" jdbcType="VARCHAR" property="purchaserphoneno" />
+    <result column="purchaserAddress" jdbcType="VARCHAR" property="purchaseraddress" />
+    <result column="orderStart" jdbcType="VARCHAR" property="orderstart" />
+    <result column="agentCode" jdbcType="VARCHAR" property="agentcode" />
+    <result column="userinforId" jdbcType="INTEGER" property="userinforid" />
+    <result column="queryCode" jdbcType="VARCHAR" property="querycode" />
+    <result column="queryinforId" jdbcType="INTEGER" property="queryinforid" />
+    <result column="totalAmount" jdbcType="REAL" property="totalamount" />
+    <result column="Commission" jdbcType="REAL" property="commission" />
+    <result column="CommissionStart" jdbcType="VARCHAR" property="commissionstart" />
+    <result column="paymentStatus" jdbcType="VARCHAR" property="paymentstatus" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="effectiveDate" jdbcType="VARCHAR" property="effectivedate" />
+    <result column="purchaserEmail" jdbcType="VARCHAR" property="purchaseremail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderId, orderNo, isagentshare, purchaserName, cardID, purchaserPhoneNo, purchaserAddress, 
+    orderStart, agentCode, userinforId, queryCode, queryinforId, totalAmount, Commission, 
+    CommissionStart, paymentStatus, createTime, updateTime,effectiveDate,purchaserEmail
+  </sql>
+  
+  <select id="getOrders1" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from nowmb_baseinfor baseinfor where baseinfor.orderStart in (20,30)
+  	<if test="userid!=null and userid!=''">
+		and baseinfor.userinforId = #{userid}
+	</if>
+		order by baseinfor.updateTime desc
+  </select>
+  
+  <select id="getOrders2" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select 
+	<include refid="Base_Column_List" />
+	from nowmb_baseinfor baseinfor where baseinfor.orderStart in (40,50)
+  	<if test="userid!=null and userid!=''">
+		and baseinfor.userinforId = #{userid}
+	</if>
+	    order by baseinfor.updateTime desc
+  </select>
+  
+  <select id="getOrders3" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from nowmb_baseinfor baseinfor where baseinfor.orderStart = 60
+  	<if test="userid!=null and userid!=''">
+		and baseinfor.userinforId = #{userid}
+	</if>
+		order by baseinfor.updateTime desc
+  </select>
+  
+  <select id="getOrdersByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select 
+	<include refid="Base_Column_List" />
+	from nowmb_baseinfor baseinfor where baseinfor.orderStart in (40,50)
+  	<if test="userid!=null and userid!=''">
+		and baseinfor.userinforId = #{userid}
+	</if>
+	<!-- <if test="createtime!=null and createtime!=''">
+		and baseinfor.createTime like CONCAT('%',#{searchDate},'%')
+	</if> -->
+	    and baseinfor.createTime like CONCAT('%',#{searchDate},'%') 
+	    order by baseinfor.updateTime desc
+  </select>
+</mapper>

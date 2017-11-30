@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nowhealth.mobile.dao.QueryinforMapper" >
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.QueryInfor" >
+    <id column="queryCodeId" property="querycodeid" jdbcType="INTEGER" />
+    <result column="baseinforOrderNo" property="baseinfororderno" jdbcType="VARCHAR" />
+    <result column="queryCode" property="querycode" jdbcType="VARCHAR" />
+    <result column="queryCodeStart" property="querycodestart" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    queryCodeId, baseinforOrderNo, queryCode, queryCodeStart, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_queryinfor
+    where queryCodeId = #{querycodeid,jdbcType=INTEGER}
+  </select>
+  <!--咨询码List集合 -->
+  <select id="listQueryCode" resultMap="BaseResultMap">
+   select
+   <include refid="Base_Column_List" />
+   from nowmb_queryinfor
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nowmb_queryinfor
+    where queryCodeId = #{querycodeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nowhealth.mobile.entity.QueryInfor" >
+    insert into nowmb_queryinfor (queryCodeId, baseinforOrderNo, queryCode, 
+      queryCodeStart, createTime, updateTime
+      )
+    values (#{querycodeid,jdbcType=INTEGER}, #{baseinfororderno,jdbcType=VARCHAR}, #{querycode,jdbcType=VARCHAR}, 
+      #{querycodestart,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nowhealth.mobile.entity.QueryInfor" >
+    insert into nowmb_queryinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="querycodeid != null" >
+        queryCodeId,
+      </if>
+      <if test="baseinfororderno != null" >
+        baseinforOrderNo,
+      </if>
+      <if test="querycode != null" >
+        queryCode,
+      </if>
+      <if test="querycodestart != null" >
+        queryCodeStart,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="querycodeid != null" >
+        #{querycodeid,jdbcType=INTEGER},
+      </if>
+      <if test="baseinfororderno != null" >
+        #{baseinfororderno,jdbcType=VARCHAR},
+      </if>
+      <if test="querycode != null" >
+        #{querycode,jdbcType=VARCHAR},
+      </if>
+      <if test="querycodestart != null" >
+        #{querycodestart,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nowhealth.mobile.entity.QueryInfor" >
+    update nowmb_queryinfor
+    <set >
+      <if test="baseinfororderno != null" >
+        baseinforOrderNo = #{baseinfororderno,jdbcType=VARCHAR},
+      </if>
+      <if test="querycode != null" >
+        queryCode = #{querycode,jdbcType=VARCHAR},
+      </if>
+      <if test="querycodestart != null" >
+        queryCodeStart = #{querycodestart,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where queryCodeId = #{querycodeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nowhealth.mobile.entity.QueryInfor" >
+    update nowmb_queryinfor
+    set baseinforOrderNo = #{baseinfororderno,jdbcType=VARCHAR},
+      queryCode = #{querycode,jdbcType=VARCHAR},
+      queryCodeStart = #{querycodestart,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where queryCodeId = #{querycodeid,jdbcType=INTEGER}
+  </update>
+</mapper>

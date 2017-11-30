@@ -1,0 +1,145 @@
+body {margin:0px; padding:0px; font-size:12px; font-family: microsoft yahei, 微软雅黑, Arial; background:#FFF;font-weight:normal;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.con_aa a {
+	padding: 1px 15px;
+}
+
+@media (max-width:600px) {
+	.ul_a li a{ font-size:14px;}
+	.text4{ font-size: 16px;}
+	.con_div p.p1{ width:21%; }
+	.text4{ width:74%;}
+	.con_aa a{ font-size:33px;}
+
+	
+}
+
+
+@media (max-width:550px) {
+	.con8_p1,.con8_p2,.con8_table tr.tr1 td,.con8_table td{ font-size:14px;}
+	.con4_tang8_div{ width:90%; max-width: 495px;}
+	.con4_tang8_div p.p3{ font-size: 14px;}
+	.con4_tang8_div p.p4{ font-size: 11px;}
+	.tang8_p1{ font-size: 11px;}
+	.con_div p.p1{ width:23%; font-size:14px; }
+	.text4{ width:73%;}
+	.con_aa a{ font-size:30px;}
+
+}
+
+@media (max-width:500px) {
+	.ul_a li a{ font-size:13px;}
+	.con_p3,.con7_p4,.con7_ul li,.con7_p6{ font-size:12px;}
+	/* .con7_divb a{ font-size:13px;} */
+	.con7_p1{ font-size:16px;}
+	.con4_tang3_p1{ font-size:13px;}
+	.con4_tang3 p.p2{ font-size:12px;}
+	.con4_tan_p1{ font-size:15px;}
+	.con4_tan_p2{ font-size:14px;}
+	.con4_tan_a1{ font-size:13px;}
+	.con4_tang6_a,.con4_tang6_ul2{ height:140px;}
+	.con3_table tr td.td1,.con3_table tr td.td4,.select,.con3_table tr.tr1,.con3_p3,.con3_p5,.con3_p7 a{ font-size:14px;}
+	.con3_p1{ font-size:16px;}
+	.con9_table td,.con_ul li,.con_div_a,.select2,.text6,.con4_p1{ font-size:14px;}
+	/* .con_ul span{ margin:0 3px;} */ .con_ul span{ margin-bottom: -3px;}
+	.con_div_a p.p1{ width:90px;}
+	.text7{ margin-left:110px; /* width:223px; */}
+	.con_i2{ width:71px; margin-right:5px;}
+	.con8_p1,.con8_p2,.con8_table tr.tr1 td,.con8_table td{ font-size:13px;}
+	.con9_div p.p1,.button1{ font-size:14px;}
+	.con4_tang8_div p.p3{ font-size: 12px;}
+	.con4_tang8_div p.p4{ font-size:9px;}
+	.tang8_p1{ font-size: 9px;}
+	.con4_tang8_div p.p1{ font-size: 19px;}
+	.con4_tang8_div p.p2{ font-size: 14px;}
+	.text4{ font-size: 15px;}
+	.con_p1{ font-size:15px;}
+	.con_aa a{ font-size:27px;}
+	
+	.content{ height:auto;}
+
+}
+
+
+
+@media (max-width:450px) {
+	.index7_p1,.con7_p2{ font-size:12px;}
+	.con4_tang6{ width:390px;}
+	.con9_table td,.con_ul li,.con_div_a,.select2,.text6,.con4_p1{ font-size:13px;}
+	/* .con_ul span{ margin:0 3px;} */
+	.con_div_a p.p1{ width:80px;}
+	.text7{ margin-left:100px; /* width:193px; */}
+	.con_i2{ width:61px; margin-right:5px;}
+	.con9_div p.p1,.button1{ font-size:13px;}
+	.con4_tang7{ width:100%;}
+	.con4_tang8_div p.p3{ font-size: 11px;}
+	.con4_tang8_div p.p4{ font-size:9px;}
+	.tang8_p1{ font-size: 8px;}
+	.con4_tang8_div p.p1{ font-size: 18px;}
+	.con4_tang8_div p.p2{ font-size: 13px;}
+	.text4{ font-size: 13px; line-height:30px; height:30px;}
+	.con_div p.p1{ line-height:30px;}
+	.con_p1{ font-size:14px;}
+	.con_aa a{ font-size:24px;}
+	.con_aa{ margin-top: 13%;}
+	.con_div{ margin-bottom:4%;}
+	.con_div2{ margin-top:4%;}
+	
+
+
+}
+
+@media (max-width:400px) {
+	.ul_a li a{ font-size:12px;}
+	.con4_tang6{ width:350px;}
+	.con4_tang6_a,.con4_tang6_ul2{ height:112px;}
+	.con3_p2{ font-size:13px;}
+	.con9_table td,.con_ul li,.con_div_a,.select2,.text6,.con4_tang1 p.p1,.con4_p1{ font-size:12px;}
+	/* .con_ul span{ margin:0 3px;} */
+	.con_div_a p.p1{ width:80px;}
+	.text7{ margin-left:100px; /* width:193px; */}
+	.con_i2{ width:61px; margin-right:5px;}
+	.con4_tang1 h2{ font-size:13px;}
+	.con8_p1,.con8_p2,.con8_table tr.tr1 td,.con8_table td{ font-size:12px;}
+	.con9_div p.p1{ font-size:13px;}
+	.con9_p3{ font-size:14px;}
+	.con4_tang7{ width:100%;}
+	/*.top span.span1{ font-size:18px;}*/
+	.top_ul li{ margin-left:3px;}
+	.top_ul li a,.con_div p.p1,.con_p2,.con_p6{ font-size:12px;}
+	
+	.tang8_p1 img{margin-top: 0; }
+	.con4_tang8_div p.p3{ font-size: 10px;}
+	.con4_tang8_div p.p4{ font-size:8px;}
+	.tang8_p1{ font-size: 6px;}
+	.con4_tang8_div p.p1{ font-size: 17px;}
+	.con4_tang8_div p.p2{ font-size: 12px;}
+	
+	.textk{ background-size:14%;}
+	.con_p1{ font-size:13px;}
+	.con_aa a{ font-size:21px;}
+	
+}
+
+@media (max-width:360px) {
+	.ul_a li{ line-height:18px;}
+	.ul_a li a{ font-size:12px;}
+	.con4_tang6{ width:320px;}
+	.con9_p1 font{ font-size:16px;}
+	.con9_p1{ font-size:12px;}
+	.con4_tang7{ width:100%;}
+	.con4_tang8_div p.p3{ font-size: 8px;}
+	.con4_tang8_div p.p4{ font-size:7px;}
+	.tang8_p1{ font-size: 6px;}
+	.con4_tang8_div p.p1{ font-size: 16px;}
+	.con4_tang8_div p.p2{ font-size: 11px;}
+	
+	.con_div p.p1{ width:25%; }
+	.text4{ width:70%;}
+	.con_p1{ font-size:12px;}
+	.con_aa a{ font-size:18px;}
+	
+
+	
+}
+
+

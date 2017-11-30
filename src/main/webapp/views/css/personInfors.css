@@ -1,0 +1,153 @@
+html,body{width:100%;min-height:100%;font:1rem Microsoft YaHei,SimHei,SimSun,Arial,Verdana;}body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(255,255,255,0);}a{text-decoration:none;outline:0}ol,ul{list-style:none}
+*{margin: 0;
+    padding: 0;
+    border: 0;
+}
+table, table td {
+    border-collapse: collapse;
+}
+table {
+    border-spacing: 0px;
+    width: 100%;
+}
+
+input{outline: none;line-height:30px;font-size: 1rem;}
+.content{max-width:640px;width:100%;height:auto;margin:0 auto;position:relative;}
+input[type="radio"] {
+    -webkit-appearance: radio;
+    outline: none;
+    vertical-align: middle;
+}
+.header {
+    position: relative;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #f63c30;
+    color: #fff;
+    position: relative;
+}
+.header i {
+    position: absolute;
+    margin-right: 10px;
+    right: -1px;
+    top: 0px;
+    background: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+.close-icon img{
+	    width: 25px;
+    vertical-align: top;
+}
+.header_box{font-size:1rem}
+.header_box>p{margin:10px 0}
+.main{width:100%;color:rgba(0,0,0,.7);font-size:0.8rem; margin-bottom: 50px;}
+.main>div{background:#fff;padding:0 10px;}
+.info{padding:5px 0 10px 0;}
+.info span{font-size:0.8rem;display:inline-block;text-align:left;}
+.date_box{padding:5px 0;border-top:1px solid #ddd;display:flex;border-bottom:1px dashed #f9f9f9;line-height:32px;}
+.date_box>input{flex:2;text-align:center;}
+.main .item_tile{color:#333;height:40px;background:#f1f1f1;line-height:40px;}
+.list_con>div,.passport-box li{height:51px;line-height:50px;border-bottom: 1px solid #ddd; font-size:1rem;position:relative;}
+.passport-box li>span,.list_con div>span,.smscode_list span{display:inline-block;min-width:25%;}
+.passport-box input,.list_con input{color:#666;}
+::-webkit-input-placeholder {color:#ddd;}
+::-moz-placeholder { color: #ddd; }
+::-webkit-input-placeholder { color:#ddd; }
+:-ms-input-placeholder { color:#ddd; }
+.smscode_list{height:56px;line-height:56px;}
+.smscode_list input{width:38%;}
+.smscode_list p{float:right;margin-top:13px;display:inline-block;padding:0 10px;height:28px;line-height:28px;border:1px solid #ff8300;border-radius: 3px;background:#fff;color:#ff8300;}
+.list_con strong{color:#f3451e;margin-left: 10px;}
+#pay_money{color:#f3451e;padding-left: 3px;}
+.main .insure_article{height:47px;line-height:50px;background: #f1f1f1;}
+.pay_box{position:fixed;bottom: 0;max-width:640px;width:100%;height:47px;background:#f74c50;line-height:47px;color:#fff;font-size:1rem;text-align:center;font-weight: 600;}
+.Color{color:#fff;background:orange;pointer-events: none;}
+
+.check-icon{display:inline-block;
+			background:url(../images/null-select.png) no-repeat;
+			background-size:100%;
+			width:15px;height:15px;
+			vertical-align: middle;
+			 margin-right: 10px;
+			     line-height: 15px;
+		    }
+.Dr-artinfo{    text-decoration: underline;    color: #f63c30;}
+.insure_article .select-on{background:url(../images/select-on.png) no-repeat;background-size: 100%;}
+.check-icon input{opacity:0;}
+.select-layer-box,.shade-layer {
+    position: fixed;
+    max-width: 640px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 99;
+    display: none;
+}
+.agreement-box{
+    width: 96%;
+    height: 94%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
+    background: #d1d4dd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition-duration: .8s;
+    transition-property: transform;
+    -webkit-transform: translate3d(0,110%,0);
+    -webkit-transition-property: transform;
+    transform: translate3d(0,110%,0);
+}
+.sel-ID-list{width:100%;
+         height:151px;
+         background:#d1d4dd;
+         transition-duration: .8s;
+	    transition-property: transform;
+	    -webkit-transform: translate3d(0,110%,0);
+	    -webkit-transition-property: transform;
+	    transform: translate3d(0,110%,0);
+	    position: absolute;
+        bottom: 7px;
+}
+.sel-ID-list p{text-align:right;border-bottom: 1px solid #ddd;background: #eee;}
+.sel-ID-list p>span{display:inline-block;height:35px;line-height:35px;padding:2px 15px;border-radius:4px;color:#f63c30;font-size:12px;}
+.sel-ID-list ul{width:100%;}
+.sel-ID-list li{
+	line-height:55px;
+	color:#333;
+	text-align:center;
+	font-size:14px;
+}
+#ID{position:absolute;right:0;width:78%;height:100%;z-index: 100;opacity: 0;}
+.sel-ID-list li:hover{bckground:#fff;}
+.FFF{background:#fff;}
+.sel-ID-list li:first-child{border-bottom:1px solid #f1f1f1;}
+#ID_ipt{width:36%;background:#fff;border:none;position:relative;}
+.ID-box{position:relative;}
+.ID-box b{
+	position:absolute;
+    right:22px;top:18px;border-bottom:2px solid #666;border-right:2px solid #666;width:8px;height:8px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.select-layer-box .anima,.shade-layer .anima {
+    transform: translate3d(0,5%,0);
+    -webkit-transform: translate3d(0,5%,0);
+}
+#os1 {
+       height: 484px;
+    margin: 0px 10px;
+}
+
+.passport-box{display:none;}
+.gender,.ID-box select{height:100%;width:72%;border:none;font-size: 1rem;}
+.KG:after{content:"KG";position:absolute;right:10px;font-size:1rem;color:#ddd;}
+.CM:after{content:"CM";position:absolute;right:10px;font-size:1rem;color:#ddd;}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nowhealth.mobile.dao.UsercommssionInforMapper" >
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.UserCommssionInfor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="phoneno" property="phoneno" jdbcType="VARCHAR" />
+    <result column="bankcard" property="bankcard" jdbcType="VARCHAR" />
+    <result column="darwaltime" property="darwaltime" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="drawalstate" property="drawalstate" jdbcType="VARCHAR" />
+    <result column="transacNumber" property="transacNumber" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+     id, userId, phoneno, bankcard, darwaltime, amount, drawalstate,transacNumber
+  </sql>
+  <!--查询已提现订单 -->
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+     select 
+    <include refid="Base_Column_List" />
+         from nowmb_userCommssion where nowmb_userCommssion.drawalstate = '1'
+    <if test="userid !='' and userid !=null">
+         and userId = #{userid,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!-- 查询当前时间提现订单 -->
+   <select id="selectByNowTime" resultType="Integer" parameterType="java.lang.String" >
+       select count(*)
+         from nowmb_userCommssion where nowmb_userCommssion.drawalstate = '1'
+         and darwaltime like CONCAT('%',#{darwaltime},'%')
+   </select>
+ 
+  <insert id="insert" parameterType="com.nowhealth.mobile.entity.UserCommssionInfor" >
+    insert into nowmb_userCommssion (userId, phoneno, bankcard, 
+      darwaltime, amount, drawalstate
+      )
+    values (#{userid,jdbcType=INTEGER}, #{phoneno,jdbcType=VARCHAR}, #{bankcard,jdbcType=VARCHAR}, 
+      #{darwaltime,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, #{drawalstate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nowhealth.mobile.entity.UserCommssionInfor" >
+    insert into nowmb_userCommssion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="phoneno != null" >
+        phoneno,
+      </if>
+      <if test="bankcard != null" >
+        bankcard,
+      </if>
+      <if test="darwaltime != null" >
+        darwaltime,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="drawalstate != null" >
+        drawalstate,
+      </if>
+      <if test="transacNumber != null" >
+        transacNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="phoneno != null" >
+        #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="darwaltime != null" >
+        #{darwaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="drawalstate != null" >
+        #{drawalstate,jdbcType=VARCHAR},
+      </if>
+      <if test="transacNumber != null" >
+        #{transacNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.nowhealth.mobile.entity.UserCommssionInfor" >
+    update nowmb_userCommssion
+    <set >
+      <if test="phoneno != null" >
+        phoneno = #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        bankcard = #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="darwaltime != null" >
+        darwaltime = #{darwaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="drawalstate != null" >
+        drawalstate = #{drawalstate,jdbcType=VARCHAR},
+      </if>
+      <if test="transacNumber != null" >
+        transacNumber = #{transacNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nowhealth.mobile.entity.UserCommssionInfor" >
+    update nowmb_userCommssion
+    set phoneno = #{phoneno,jdbcType=VARCHAR},
+      bankcard = #{bankcard,jdbcType=VARCHAR},
+      darwaltime = #{darwaltime,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      drawalstate = #{drawalstate,jdbcType=VARCHAR}
+      transacNumber = #{transacNumber,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

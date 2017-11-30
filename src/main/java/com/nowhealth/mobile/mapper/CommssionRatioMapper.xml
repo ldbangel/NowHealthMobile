@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nowhealth.mobile.dao.CommssionRatioMapper" >
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.CommssionRatio" >
+    <id column="comratioid" property="comratioid" jdbcType="INTEGER" />
+    <result column="comratio" property="comratio" jdbcType="DOUBLE" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="userphone" property="userphone" jdbcType="VARCHAR" />
+    <result column="usernickname" property="usernickname" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    comratioid, comratio, createtime, updatetime, userphone, usernickname
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_commssion_ratio
+    where comratioid = #{comratioid,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insert" parameterType="com.nowhealth.mobile.entity.CommssionRatio" >
+    insert into nowmb_commssion_ratio (comratioid, comratio, createtime, 
+      updatetime, userphone, usernickname
+      )
+    values (#{comratioid,jdbcType=INTEGER}, #{comratio,jdbcType=DOUBLE}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{userphone,jdbcType=VARCHAR}, #{usernickname,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.nowhealth.mobile.entity.CommssionRatio" >
+    insert into nowmb_commssion_ratio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comratioid != null" >
+        comratioid,
+      </if>
+      <if test="comratio != null" >
+        comratio,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="userphone != null" >
+        userphone,
+      </if>
+      <if test="usernickname != null" >
+        usernickname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comratioid != null" >
+        #{comratioid,jdbcType=INTEGER},
+      </if>
+      <if test="comratio != null" >
+        #{comratio,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="usernickname != null" >
+        #{usernickname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.nowhealth.mobile.entity.CommssionRatio" >
+    update nowmb_commssion_ratio
+    <set >
+      <if test="comratio != null" >
+        comratio = #{comratio,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userphone != null" >
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="usernickname != null" >
+        usernickname = #{usernickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comratioid = 1
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nowhealth.mobile.entity.CommssionRatio" >
+    update nowmb_commssion_ratio
+    set comratio = #{comratio,jdbcType=DOUBLE},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      userphone = #{userphone,jdbcType=VARCHAR},
+      usernickname = #{usernickname,jdbcType=VARCHAR}
+    where comratioid = #{comratioid,jdbcType=INTEGER}
+  </update>
+</mapper>

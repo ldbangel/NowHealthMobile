@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowhealth.mobile.dao.BaseInforMapper">
+  <resultMap id="BaseResultMap" type="com.nowhealth.mobile.entity.BaseInfor">
+    <id column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="orderNo" jdbcType="VARCHAR" property="orderno" />
+    <result column="isagentshare" jdbcType="INTEGER" property="isagentshare" />
+    <result column="purchaserName" jdbcType="VARCHAR" property="purchasername" />
+    <result column="cardStyle" jdbcType="VARCHAR" property="cardStyle" />
+    <result column="cardID" jdbcType="VARCHAR" property="cardID" />
+    <result column="purchaserSex" jdbcType="INTEGER" property="purchaserSex" />
+    <result column="purchaserAge" jdbcType="INTEGER" property="purchaserAge" />
+    <result column="purchaserHigh" jdbcType="DOUBLE" property="purchaserHigh" />
+    <result column="purchaserweight" jdbcType="DOUBLE" property="purchaserweight" />
+    <result column="isAllergy" jdbcType="INTEGER" property="isAllergy" />
+    <result column="isfamilyillness" jdbcType="INTEGER" property="isfamilyillness" />
+    <result column="purchaserPhoneNo" jdbcType="VARCHAR" property="purchaserphoneno" />
+    <result column="purchaserAddress" jdbcType="VARCHAR" property="purchaseraddress" />
+    <result column="orderStart" jdbcType="VARCHAR" property="orderstart" />
+    <result column="agentCode" jdbcType="VARCHAR" property="agentcode" />
+    <result column="userinforId" jdbcType="INTEGER" property="userinforid" />
+    <result column="queryCode" jdbcType="VARCHAR" property="querycode" />
+    <result column="queryinforId" jdbcType="INTEGER" property="queryinforid" />
+    <result column="totalAmount" jdbcType="REAL" property="totalamount" />
+    <result column="Commission" jdbcType="REAL" property="commission" />
+    <result column="CommissionStart" jdbcType="VARCHAR" property="commissionstart" />
+    <result column="paymentStatus" jdbcType="VARCHAR" property="paymentstatus" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="effectiveDate" jdbcType="VARCHAR" property="effectivedate" />
+    <result column="purchaserEmail" jdbcType="VARCHAR" property="purchaseremail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderId, orderNo, isagentshare, purchaserName, cardStyle,cardID,purchaserSex,purchaserAge, 
+    purchaserHigh,purchaserweight,isAllergy,isfamilyillness,purchaserPhoneNo, purchaserAddress, 
+    orderStart, agentCode, userinforId, queryCode, queryinforId, totalAmount, Commission, 
+    CommissionStart, paymentStatus, createTime, updateTime,effectiveDate,purchaserEmail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_baseinfor
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </select>
+   <select id="selectByPurchaserPhoneNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_baseinfor
+    where paymentStatus =20
+    and purchaserPhoneNo = #{purchaserPhoneNo,jdbcType=VARCHAR} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nowmb_baseinfor
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nowhealth.mobile.entity.BaseInfor">
+    insert into nowmb_baseinfor (orderId, orderNo, isagentshare, 
+      purchaserName, cardStyle,cardID,purchaserSex,purchaserAge, 
+      purchaserHigh,purchaserweight,isAllergy,isfamilyillness, purchaserPhoneNo, 
+      purchaserAddress, orderStart, agentCode, 
+      userinforId, queryCode, queryinforId, 
+      totalAmount, Commission, CommissionStart, 
+      paymentStatus, createTime, updateTime,effectiveDate,purchaserEmail
+      )
+    values (#{orderid,jdbcType=INTEGER}, #{orderno,jdbcType=VARCHAR}, #{isagentshare,jdbcType=INTEGER}, 
+      #{purchasername,jdbcType=VARCHAR}, #{cardStyle,jdbcType=VARCHAR},
+      #{cardID,jdbcType=VARCHAR}, #{purchaserSex,jdbcType=INTEGER},#{purchaserAge,jdbcType=INTEGER},
+      #{purchaserHigh,jdbcType=DOUBLE},#{purchaserweight,jdbcType=DOUBLE},#{isAllergy,jdbcType=INTEGER},
+      #{isfamilyillness,jdbcType=INTEGER}, #{purchaserphoneno,jdbcType=VARCHAR}, 
+      #{purchaseraddress,jdbcType=VARCHAR}, #{orderstart,jdbcType=VARCHAR}, #{agentcode,jdbcType=VARCHAR}, 
+      #{userinforid,jdbcType=INTEGER}, #{querycode,jdbcType=VARCHAR}, #{queryinforid,jdbcType=INTEGER}, 
+      #{totalamount,jdbcType=REAL}, #{commission,jdbcType=REAL}, #{commissionstart,jdbcType=VARCHAR}, 
+      #{paymentstatus,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},#{effectivedate,jdbcType=VARCHAR},#{purchaserEmail,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.nowhealth.mobile.entity.BaseInfor">
+    insert into nowmb_baseinfor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="orderno != null">
+        orderNo,
+      </if>
+      <if test="isagentshare != null">
+        isagentshare,
+      </if>
+      <if test="purchasername != null">
+        purchaserName,
+      </if>
+      <if test="cardStyle != null">
+        cardStyle,
+      </if>
+       <if test="cardID != null">
+        cardID,
+      </if>
+       <if test="purchaserSex != null">
+        purchaserSex,
+      </if>
+       <if test="purchaserAge != null">
+        purchaserAge,
+      </if>
+       <if test="purchaserHigh != null">
+        purchaserHigh,
+      </if>
+       <if test="purchaserweight != null">
+        purchaserweight,
+      </if>
+       <if test="isAllergy != null">
+        isAllergy,
+      </if>
+       <if test="isfamilyillness != null">
+        isfamilyillness,
+      </if>
+      <if test="purchaserphoneno != null">
+        purchaserPhoneNo,
+      </if>
+      <if test="purchaseraddress != null">
+        purchaserAddress,
+      </if>
+      <if test="orderstart != null">
+        orderStart,
+      </if>
+      <if test="agentcode != null">
+        agentCode,
+      </if>
+      <if test="userinforid != null">
+        userinforId,
+      </if>
+      <if test="querycode != null">
+        queryCode,
+      </if>
+      <if test="queryinforid != null">
+        queryinforId,
+      </if>
+      <if test="totalamount != null">
+        totalAmount,
+      </if>
+      <if test="commission != null">
+        Commission,
+      </if>
+      <if test="commissionstart != null">
+        CommissionStart,
+      </if>
+      <if test="paymentstatus != null">
+        paymentStatus,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="effectivedate != null">
+        effectiveDate,
+      </if>
+      <if test="purchaseremail != null">
+        purchaserEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="isagentshare != null">
+        #{isagentshare,jdbcType=INTEGER},
+      </if>
+      <if test="purchasername != null">
+        #{purchasername,jdbcType=VARCHAR},
+      </if>
+      <if test="cardStyle != null">
+        #{cardStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="cardID != null">
+        #{cardID,jdbcType=VARCHAR},
+      </if>
+       <if test="purchaserSex != null">
+       #{purchaserSex,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserAge != null">
+        #{purchaserAge,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserHigh != null">
+        #{purchaserHigh,jdbcType=DOUBLE},
+      </if>
+       <if test="purchaserweight != null">
+        #{purchaserweight,jdbcType=DOUBLE},
+      </if>
+       <if test="isAllergy != null">
+        #{isAllergy,jdbcType=INTEGER},
+      </if>
+      <if test="isfamilyillness != null">
+       #{isfamilyillness,jdbcType=INTEGER},
+      </if>
+      <if test="purchaserphoneno != null">
+        #{purchaserphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseraddress != null">
+        #{purchaseraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstart != null">
+        #{orderstart,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null">
+        #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userinforid != null">
+        #{userinforid,jdbcType=INTEGER},
+      </if>
+      <if test="querycode != null">
+        #{querycode,jdbcType=VARCHAR},
+      </if>
+      <if test="queryinforid != null">
+        #{queryinforid,jdbcType=INTEGER},
+      </if>
+      <if test="totalamount != null">
+        #{totalamount,jdbcType=REAL},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=REAL},
+      </if>
+      <if test="commissionstart != null">
+        #{commissionstart,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentstatus != null">
+        #{paymentstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectivedate != null">
+        #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseremail != null">
+        #{purchaseremail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nowhealth.mobile.entity.BaseInfor">
+    update nowmb_baseinfor
+    <set>
+      <if test="orderno != null">
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="isagentshare != null">
+        isagentshare = #{isagentshare,jdbcType=INTEGER},
+      </if>
+      <if test="purchasername != null">
+        purchaserName = #{purchasername,jdbcType=VARCHAR},
+      </if>
+      <if test="cardStyle != null">
+        cardStyle = #{cardStyle,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="cardID != null">
+         cardID = #{cardID,jdbcType=VARCHAR},
+      </if>
+       <if test="purchaserSex != null">
+         purchaserSex = #{purchaserSex,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserAge != null">
+       purchaserAge = #{purchaserAge,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserHigh != null">
+       purchaserHigh = #{purchaserHigh,jdbcType=DOUBLE},
+      </if>
+       <if test="purchaserweight != null">
+       purchaserweight = #{purchaserweight,jdbcType=DOUBLE},
+      </if>
+       <if test="isAllergy != null">
+       isAllergy = #{isAllergy,jdbcType=INTEGER},
+      </if>
+      <if test="isfamilyillness != null">
+       isfamilyillness = #{isfamilyillness,jdbcType=INTEGER},
+      </if>
+      <if test="purchaserphoneno != null">
+        purchaserPhoneNo = #{purchaserphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseraddress != null">
+        purchaserAddress = #{purchaseraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstart != null">
+        orderStart = #{orderstart,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null">
+        agentCode = #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userinforid != null">
+        userinforId = #{userinforid,jdbcType=INTEGER},
+      </if>
+      <if test="querycode != null">
+        queryCode = #{querycode,jdbcType=VARCHAR},
+      </if>
+      <if test="queryinforid != null">
+        queryinforId = #{queryinforid,jdbcType=INTEGER},
+      </if>
+      <if test="totalamount != null">
+        totalAmount = #{totalamount,jdbcType=REAL},
+      </if>
+      <if test="commission != null">
+        Commission = #{commission,jdbcType=REAL},
+      </if>
+      <if test="commissionstart != null">
+        CommissionStart = #{commissionstart,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentstatus != null">
+        paymentStatus = #{paymentstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectivedate != null">
+        effectiveDate = #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseremail != null">
+        purchaserEmail = #{purchaseremail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="cancelOrderByorderNo" parameterType="java.lang.String">
+  	update nowmb_baseinfor set orderStart = 60 where orderNo = #{orderno,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 定时任务批量撤单 -->
+  <update id="autoBatchCancelOrder">
+  	update nowmb_baseinfor set orderStart = 60 where orderStart = 30 and paymentStatus = 10
+  </update>
+  
+   <update id="updateBasebyorderNo" parameterType="com.nowhealth.mobile.entity.BaseInfor">
+    update nowmb_baseinfor
+    <set>
+      <if test="orderno != null">
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="isagentshare != null">
+        isagentshare = #{isagentshare,jdbcType=INTEGER},
+      </if>
+      <if test="purchasername != null">
+        purchaserName = #{purchasername,jdbcType=VARCHAR},
+      </if>
+      <if test="cardStyle != null">
+        cardStyle = #{cardStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="cardID != null">
+         cardID = #{cardID,jdbcType=VARCHAR},
+      </if>
+       <if test="purchaserSex != null">
+         purchaserSex = #{purchaserSex,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserAge != null">
+       purchaserAge = #{purchaserAge,jdbcType=INTEGER},
+      </if>
+       <if test="purchaserHigh != null">
+       purchaserHigh = #{purchaserHigh,jdbcType=DOUBLE},
+      </if>
+       <if test="purchaserweight != null">
+       purchaserweight = #{purchaserweight,jdbcType=DOUBLE},
+      </if>
+       <if test="isAllergy != null">
+       isAllergy = #{isAllergy,jdbcType=INTEGER},
+      </if>
+      <if test="isfamilyillness != null">
+       isfamilyillness =  #{isfamilyillness,jdbcType=INTEGER},
+      </if>
+      <if test="purchaserphoneno != null">
+        purchaserPhoneNo = #{purchaserphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseraddress != null">
+        purchaserAddress = #{purchaseraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstart != null">
+        orderStart = #{orderstart,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null">
+        agentCode = #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userinforid != null">
+        userinforId = #{userinforid,jdbcType=INTEGER},
+      </if>
+      <if test="querycode != null">
+        queryCode = #{querycode,jdbcType=VARCHAR},
+      </if>
+      <if test="queryinforid != null">
+        queryinforId = #{queryinforid,jdbcType=INTEGER},
+      </if>
+      <if test="totalamount != null">
+        totalAmount = #{totalamount,jdbcType=REAL},
+      </if>
+      <if test="commission != null">
+        Commission = #{commission,jdbcType=REAL},
+      </if>
+      <if test="commissionstart != null">
+        CommissionStart = #{commissionstart,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentstatus != null">
+        paymentStatus = #{paymentstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectivedate != null">
+        effectiveDate = #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseremail != null">
+        purchaserEmail = #{purchaseremail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderNo = #{orderno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nowhealth.mobile.entity.BaseInfor">
+    update nowmb_baseinfor
+    set orderNo = #{orderno,jdbcType=VARCHAR},
+      isagentshare = #{isagentshare,jdbcType=INTEGER},
+      purchaserName = #{purchasername,jdbcType=VARCHAR},
+      cardStyle = #{cardStyle,jdbcType=VARCHAR},
+      cardID = #{cardID,jdbcType=VARCHAR},
+      purchaserSex = #{purchaserSex,jdbcType=INTEGER},
+      purchaserAge = #{purchaserAge,jdbcType=INTEGER},
+      purchaserHigh = #{purchaserHigh,jdbcType=DOUBLE},
+      purchaserweight = #{purchaserweight,jdbcType=DOUBLE},
+      isAllergy = #{isAllergy,jdbcType=INTEGER},
+      isfamilyillness =#{isfamilyillness,jdbcType=INTEGER},
+      purchaserPhoneNo = #{purchaserphoneno,jdbcType=VARCHAR},
+      purchaserAddress = #{purchaseraddress,jdbcType=VARCHAR},
+      orderStart = #{orderstart,jdbcType=VARCHAR},
+      agentCode = #{agentcode,jdbcType=VARCHAR},
+      userinforId = #{userinforid,jdbcType=INTEGER},
+      queryCode = #{querycode,jdbcType=VARCHAR},
+      queryinforId = #{queryinforid,jdbcType=INTEGER},
+      totalAmount = #{totalamount,jdbcType=REAL},
+      Commission = #{commission,jdbcType=REAL},
+      CommissionStart = #{commissionstart,jdbcType=VARCHAR},
+      paymentStatus = #{paymentstatus,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      effectiveDate = #{effectivedate,jdbcType=VARCHAR},
+      purchaserEmail = #{purchaseremail,jdbcType=VARCHAR}
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </update>
+  
+  
+   <select id="getOrderNo"  statementType="CALLABLE"  
+     resultType="String" >  
+      {call generate_orderNo(
+      #{orderNamePre,jdbcType=VARCHAR,mode=IN},
+      #{number,jdbcType=INTEGER,mode=IN},  
+      #{orderNo,jdbcType=VARCHAR,mode=OUT})
+        }
+    </select>
+    
+    <select id="selectByOrderno" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nowmb_baseinfor
+    where orderNo = #{orderno,jdbcType=VARCHAR}
+   </select>
+  
+</mapper>

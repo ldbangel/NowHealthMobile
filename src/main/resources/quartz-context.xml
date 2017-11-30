@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+            
+	<!--jobBean用于设定启动时运用的Bean与方法-->
+	<bean id="jobDetail1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="myAccountService" />
+		</property>
+		<property name="targetMethod">
+			<value>autoCancelOrders</value>
+		</property>
+	</bean>
+	
+	<!--  定时器设定启动时间-->
+	<bean id="cronReportTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="jobDetail1" />
+		</property>
+		<property name="cronExpression">
+			<value>${cancelOrder.trigger.cronExpression}</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="startBean" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+			    <ref bean="cronReportTrigger1" />			   
+			</list>
+		</property>
+	</bean>
+	
+	
+
+</beans>

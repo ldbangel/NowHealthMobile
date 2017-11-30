@@ -1,0 +1,56 @@
+html,body{width:100%;min-height:100%;font:1rem Microsoft YaHei,SimHei,SimSun,Arial,Verdana;}body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(255,255,255,0);background:#fff;}a{text-decoration:none;outline:0}ol,ul{list-style:none}
+*{margin: 0;
+    padding: 0;
+    border: 0;
+}
+table, table td {
+    border-collapse: collapse;
+}
+table {
+    border-spacing: 0px;
+    width: 100%;
+}
+select{
+    -webkit-user-select: auto;
+    padding: 0;
+    outline: medium;
+    margin-left: 3%;
+}
+input{outline: none;background:#fff;}
+.content{max-width:640px;width:100%;height:auto;margin:0 auto;position:relative;margin-bottom: 20px;}
+.header{position:relative;height:34px;line-height:34px;text-align:center;font-size:1rem;background-color:#f45248;color:#fff;position:relative}
+.header i{position:absolute;
+    margin-left: 10px;
+    margin-top: 12px;
+    left:0px;top:0px;border-top:2px solid #fff;border-left:2px solid #fff;width:8px;height:8px;    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+table{border-spacing:0;}
+table,table td{border-collapse:collapse;}
+.main{background:#f6f6f6;}
+.top{background:#f45248;color:#fff;font-size: 12px;text-align:center;padding-top: 10px;    padding-bottom: 20px;}
+.top h2{
+    font-weight:500;
+}
+.tab_list_box{margin-top:15px;}
+.bill_box{display:flex;display: -webkit-flex;padding:0 20%;margin-top:40px;}
+.bill_box span{font-size:14px;}
+.bill_box li:first-child{border-right:1px solid #fff;}
+.bill_box li{-moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align:center;
+}
+.tab-list{text-align:center;width:94%;margin:0 auto;    font-size: 0.8rem;}
+.tab-list th{font-weight: 500;line-height:40px;background:#f5f6f7;color:#666;}
+.tab-list td{line-height:40px;border-bottom: 1px solid #f5f6f7;}
+.tab-list td:first-child{width:34%;}
+.fir_td{color:#f85925;}
+.date_box{width:96%;margin:15px 2%;height:35px;border:1px solid #dedede;border-radius: 5px;background:url(../images/time2_4637194.png) 2%  no-repeat;background-size: 22px 22px;}
+.date_box input{width:84%;height:100%;padding-left: 11%;background:url(../images/jiant2_d524c90.png) right center  no-repeat;    background-size: 13px 8px;}
+.dwwc td:nth-child(3){display:none;}
